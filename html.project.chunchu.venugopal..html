@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Restaurant Website | WebCoding</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: sans-serif;
+            }
+            body {
+                background: #fff;
+            }
+            .top-header {
+                background: #383838;
+                height: 40px;
+                color: #dbdbdb;
+                padding: 10px 50px;
+                width: 100vw;
+            }
+            header {
+                background: #f0a211;
+                width: 100%;
+                color: #000;
+                position: sticky;
+                top: 0;
+                z-index: 4;
+            }
+            nav {
+                height: 70px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 90%;
+                margin: 0 auto;
+            }
+            nav .logo {
+                width: 65px;
+            }
+            nav .logo img {
+                width: 100%;
+            }
+            nav ul {
+                display: flex;
+                align-items: center;
+            }
+            nav ul li {
+                list-style: none;
+                margin: 0 13px;
+            }
+            nav ul li a {
+                text-decoration: none;
+                color: #5a5959;
+                font-size: 0.9rem;
+                font-weight: 700;
+            }
+            .hero {
+                position: relative;
+                width: 100vw;
+                max-width: 100%;
+            }
+            .hero .hero-top-video {
+                position: relative;
+                width: 100%;
+                overflow: hidden;
+                z-index: -1;
+            }
+            .hero .hero-top-video video {
+                width: 100%;
+                object-fit: cover;
+            }
+            .hero-top-video::before {
+                content: '';
+                position: absolute;
+                z-index: 1;
+                background: rgba(0, 0, 0, 0.7);
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+            }
+            .content_wrapper {
+                position: absolute;
+                top: 25%;
+                color: #fff;
+                text-align: center;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+            .content_wrapper h1 {
+                font-size: 3rem;
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: 600;
+                margin-bottom: 20px;
+            }
+            .content_wrapper h2 {
+                font-size: 1.1rem;
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: 100;
+                margin-bottom: 20px;
+                letter-spacing: 1px;
+            }
+            span {
+                color: #f0a211;
+                font-size: 1.2rem;
+                font-weight: 600;
+            }
+            .content_wrapper .book-table {
+                padding: 14px 30px;
+                font-size: 1.1rem;
+                font-weight: 600;
+                border: 1px solid #e0dede;
+                background: rgba(0, 0, 0, 0.5);
+                margin-top: 30px;
+                cursor: pointer;
+            }
+            .content_wrapper .book-table:hover {
+                background: #f0a211;
+                border: 1px solid transparent;
+            }
+            #about {
+                width: 100vw;
+                padding: 50px 0;
+                background: #fff;
+            }
+            #about .container {
+                width: 80%;
+                margin: 0 auto;
+                padding: 80px 0;
+                display: flex;
+                justify-content: space-between;
+            }
+            #about .about-left {
+                width: 50%;
+                padding-top:30px;
+            }
+            #about .about-right {
+                width: 40%;
+            }
+            #about .about-right img {
+                width: 100%;
+            }
+            #about .about-left h1 {
+                font-size: 3rem;
+                letter-spacing: 1px;
+                margin: 10px 0;
+            }
+            #about .about-left h3 {
+                font-size: 1rem;
+                letter-spacing: 2px;
+                color: #979797;
+            }
+            #about .about-left p {
+                font-size: 1rem;
+                letter-spacing: 2px;
+                color: #141414;
+            }
+            #about .about-left button {
+                margin-top: 30px;
+                padding: 15px 40px;
+                font-size: 1rem;
+                background: transparent;
+                border: 1px solid #ccc;
+                outline: none;
+                color: #383838;
+                letter-spacing: 1px;
+                cursor: pointer;
+            }
+            #about .about-left button:hover {
+                background: #f0a211;
+                border: 1px solid transparent;
+            }
+            #menu-section,#blog {
+                width: 100vw;
+                padding: 50px 0;
+                background: #f8eeee;
+            }
+            #menu-section .container,#blog .container {
+                width: 80%;
+                margin: 0 auto;
+                padding: 60px 10px;
+            }
+            .heading {
+                text-align: center;
+                font-size: 50px;
+                margin-bottom: 40px;
+            }
+            #menu-section .row {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            #menu-section .row .menu-card {
+                width: 500px;
+                height: 200px;
+                background: #fff;
+                border: 1px solid #c4c3c3;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            
+            #menu-section .row-reverse{
+                flex-direction: row-reverse;
+            }
+            #menu-section .row .menu-card .menu-img {
+                width: 50%;
+                height: 100%;
+            }
+            #menu-section .row .menu-card .menu-img img {
+                width: 100%;
+                height: 100%;
+            }
+            #menu-section .menu-card .menu-text {
+                padding: 0 20px;
+                width: 50%;
+            }
+            #menu-section .menu-card .menu-text h4 {
+                margin-bottom: 10px;
+            }
+            #menu-section .menu-card .menu-text p {
+                margin-bottom: 10px;
+            }
+            #menu-section .menu-card .menu-text .price {
+                font-size: 20px;
+                font-weight: 600;
+                margin-bottom: 20px;
+            }
+            #menu-section .menu-card .menu-text .btn a {
+                background: #f0a211;
+                padding: 7px 20px;
+                text-decoration: none;
+                color:#fff;
+                margin-top:20px;
+            }
+            
+            
+            .Food.Rating {
+                text-align: center; 
+                margin: 20px; 
+                padding: 20px; 
+                background-color: #96962c; 
+                color: #000; 
+                border-radius: 5px; 
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+                
+            }
+            #food.Rating {
+                display: flex; 
+                flex-direction: column; 
+                align-items: center; 
+                justify-content: center; 
+                min-height: 200px;
+                
+              
+                
+            }
+
+           
+            .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+            .product-item {
+            background: #8b7474;
+            margin: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+       .product-item img {
+           width: 300px; 
+           height: 200px; 
+           object-fit: cover; 
+           border-radius: 5px; 
+           
+       }
+
+            .rating {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .rating input {
+            display: none;
+        }
+
+        .star {
+            font-size: 30px;
+            color: #3e1b1b; /* Gray color for unselected stars */
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .star.selected, .star:hover, .star:hover ~ .star {
+            color: #ffd700; /* Gold color for selected stars */
+        }
+
+        .rating-result {
+            margin-left: 10px;
+            font-weight: bold;
+        }
+        
+
+
+        #food-events,
+#food-featured-events,
+#food-all-events {
+    background: linear-gradient(to bottom, orange, black);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#food-events .event-card,
+#food-featured-events .event-card,
+#food-all-events .event-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+#food-events .event-card img,
+#food-featured-events .event-card img,
+#food-all-events .event-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+#food-events .event-card a,
+#food-featured-events .event-card a,
+#food-all-events .event-card a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+#food-events .event-card a:hover,
+#food-featured-events .event-card a:hover,
+#food-all-events .event-card a:hover {
+    text-decoration: underline;
+}
+.welcome-section {
+            text-align: center;
+            padding: 50px 0;
+            background-color: #83651a; /* Dark grey background */
+            
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .gallery img{
+            width: 100%; /* Fixed width for images */
+            height: 250px; /* Fixed height for images */
+            object-fit: cover; /* Ensure images cover the area without distortion */
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+            animation: circular-float 5s ease-in-out infinite;
+        }
+         @keyframes circular-float {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(10px, -10px); } /* Move up-right */
+            50% { transform: translate(0, -20px); } /* Move up */
+            75% { transform: translate(-10px, -10px); } /* Move up-left */
+            100% { transform: translate(0, 0); } /* Back to original */
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1); /* Slight enlargement on hover */
+        }
+        
+
+       
+
+        
+            #blog{
+                background: #c1baba;
+                
+            }
+            #blog .container{
+                width:90%;
+            }
+            #blog .row{
+                display:flex;
+                align-items: center;
+                justify-content: center;
+                gap:50px;
+                margin-top:50px;
+                padding:20px;
+                flex-wrap: wrap;
+            }
+            #blog .row .col{
+                width:300px;
+                background: #9b8c8c;
+                height:auto;
+            }
+            #blog .row .col div{
+                margin: 10px;
+            }
+            #blog .row .col div a{
+                text-decoration:none;
+                color:#383838;
+                margin-right:20px;
+            }
+            #blog .row .col img{
+                width:100%;
+                height:350px;
+            }
+            #blog .row .col h3{
+                margin:20px 10px;
+            }
+            #blog .row .col p{
+                margin:20px 0px;
+                margin-bottom: 30px;
+            }
+             #blog .row .col p a{
+                text-decoration: none;
+                border:1px solid #f0a211;
+                padding:10px 20px;
+                color: #fff;
+                background: #f0a211;
+            }
+            #blog .row .col p a:hover{
+                border:1px solid transparent;
+                background: #f0a211;
+                color:#383838;
+                transition: 0.5s;
+                background: transparent;
+                
+                
+            }
+            .about-us, .featured-positions, .employee-salaries, .our-team, .why-join-us, .application-process, .testimonials {
+            margin: 20px 0;
+            padding: 20px;
+        }
+
+        .position-card, .team-card {
+            border: 1px solid #000; /* Black */
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            background: #d8d0d0;
+        }
+
+        .position-card h3, .team-card h3 {
+            margin: 0 0 10px;
+        }
+
+        .position-card a, .team-card a {
+            display: inline-block;
+            margin-top: 10px;
+            color: #FFA500; /* Orange */
+            text-decoration: none;
+            border: 1px solid #FFA500; /* Orange */
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+
+        .position-card a:hover, .team-card a:hover {
+            background: #FFA500; /* Orange */
+            color: #fff; /* White */
+        }
+
+        .testimonial-card {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .testimonial-card img {
+            border-radius: 50%;
+            margin-right: 15px;
+            width: 50px;
+            height: 50px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .testimonial-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .testimonial-card img {
+                margin-bottom: 10px;
+            }
+        }
+
+            #contact{
+                width:100vw;
+                padding:50px 0;
+                background: url(https://i.ibb.co/hXXRNNb/blog-1.jpg);
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+            }
+            #contact .container{
+                width:90%;
+                padding:50px;
+            }
+            #contact .contact-form{
+                max-width: 600px;
+                background: #fff;
+                margin-left:30px;
+                padding:40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+            #contact .contact-form h3{
+                font-size: 2rem;
+                margin-bottom: 30px;
+                font-family: Verdana,Geneva,Tahoma,Sans-Serif;
+            }
+            #contact .contact-form form{
+                width:100%;
+            }
+            #contact .contact-form form div{
+                display: flex;
+                flex-direction: column;
+                justify-content: left;
+            }
+            #contact .contact-form form div label{
+                margin-bottom: 6px;
+                font-weight: 600;
+            }
+            #contact .contact-form form div input{
+                margin-bottom: 14px;
+                padding: 10px;
+                border:1px solid #ccc;
+                outline: none;
+            }
+            #contact .contact-form form button{
+               width:100%;
+               padding: 12px;
+               margin-top:30px;
+               border:1px solid #f0a211;
+               background: transparent;
+               font-size:1.2rem;
+               font-weight:500;
+               cursor: pointer;
+            }
+            #contact .contact-form form  button:hover{
+               border:1px solid transparent;
+               background: #f0a211;
+               transition: 0.5s;
+               color:#fff;
+            }
+            #footer{
+                background: #333333;
+                width:100vw;
+            }
+            #footer .container{
+                width:90%;
+                margin:0 auto;
+                padding:40px;
+            }
+            #footer .container .top-footer img{
+                width:150px;
+            }
+            #footer .container .footer-links{
+                display:flex;
+                justify-content: space-between;
+                flex-wrap:wrap;
+            }
+            #footer .container .footer-links .column{
+                margin: 40px 10px;
+            }
+            #footer .container .footer-links .column .col-link{
+                list-style: none;
+                margin-top: 16px;
+            }
+            #footer .col-link li{
+                margin-top:10px;
+            }
+            #footer .col-link li a{
+                text-decoration: none;
+                color:#ccc;
+                cursor:pointer;
+            }
+            #footer .col-link li a:hover{
+                color:#f5b62f;
+            }
+            #footer .column div{
+                color:#fff;
+                font-size: 1.2rem;
+                font-weight: 550;
+                margin-bottom: 30px;
+            }
+            #footer .column .col-link a i{
+                color:#fff;
+                font-size: 1.3rem;
+                font-weight: 550;
+                margin-bottom: 30px;
+                margin-right: 8px;
+                border:1px solid #fff;
+                padding:10px;
+                border-radius: 50%;
+            }
+            #footer .column .col-link a i:hover{
+                color:#f0a211;
+                background: #fff;
+                border:1px solid #f0a211;
+                transition: 0.5s;
+            }
+            .newsletter input, .newsletter button{
+                width:100%;
+                margin:10px 0;
+                padding: 10px;
+                border:1px solid #f0a211;
+            }
+            .newsletter button{
+                background:#f0a211;
+                color: #fff;
+                font-weight: 600;
+                font-size: 16px;
+            }
+            .footer-bottom{
+                text-align: center;
+                padding: 20px;
+                color:#e6e4e4;
+            }
+            hr{
+                border:1p solid #4e4e4e;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="top-header">
+            <div class="top-nav">
+                <p>Open hours: Monday - Sunday 8.00AM - 9.00PM</p>
+            </div>
+        </div>
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="https://i.ibb.co/5BNk0sg/logo.png" alt="Restaurant Logo">
+                </div>
+                <div class="nav-items">
+                    <ul>
+                        <li><a href="#">HOME</a></li>
+                        <li><a href="#about">ABOUT US</a></li>
+                        <li><a href="#menu-section">SEE MENU</a></li>
+                        <li><a href="#food Rating">FOOD RATING</a></li>
+                        <li><a href="#food-events">FOOD EVENTS</a></li>
+                        <li><a href="#food-gallary">FOOD GALLARY</a></li>
+                        <li><a href="#blog">BLOG</a></li>
+                        <li><a href="#careers">CAREERS</a></li>
+                        <li><a href="#contact">CONTACT US</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- ...........Hero Section........... -->
+        <div class="hero">
+            <div class="hero-top-video" style="width:100%;">
+                <video autoplay loop muted id="video">
+                    <source src="video.2.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="content_wrapper">
+                <h1>Welcome To Our Rasoi</h1>
+                <h2>Come and taste our healthy and delicious food from our <span>'Rasoi</span></h2>
+                <div class="book-table">
+                    <p>Book Table</p>
+                </div>
+            </div>
+        </div>   
+        <!-- ...........About Section........... -->
+        <div id="about">
+            <div class="container">
+                <div class="about-left">
+                    <h3>About Us</h3>
+                    <h1 style="font-size: 40px;">Welcome</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur, meaning "pain itself sits within structure," highlighting those things made possible, as it opens up despite obstacles, reaching a connection to lasting value?</p>
+                    <br>
+                    <p>Lorem ipsum dolor, meaning "pain itself," sits within structure and in the company of those who strive diligently despite challenges. Life continues, and alternative paths combine to form new alliances! Often sitting, exercising one’s willpower and wishing for purity, it becomes clear that truth has its own identity that may not yet fully know its worth, with challenging times that call for endurance above all?</p>
+
+                    <button>Learn More About Us</button>
+                </div>
+                <div class="about-right">
+                    <img src="https://i.ibb.co/fCz2ZDf/about-page.jpg" alt="about-page" border="0">
+                </div>
+            </div>
+        </div>
+        <!-- ...........Menu Section........... -->
+        <div id="menu-section">
+            <div class="container">
+                <div class="heading">Delicious Menu</div>
+                <div class="row">
+                    <!-- Dish 1 -->
+                    <div class="menu-card">
+                        <div class="menu-img">
+                            <img src="https://i.ibb.co/QKq76K5/menu-1.jpg" alt="Grilled chicken with potatoes">
+                        </div>
+                        <div class="menu-text">
+                            <h4>Grilled chicken with potatoes</h4>
+                            <p>Chicken, Garlic, Potatoes, Tomatoes</p>
+                            <p class="price">&#8377;2000</p>
+                            <p class="btn"><a href="#">Order Now</a></p>
+                        </div>
+                    </div>
+                    <!-- Dish 2 -->
+                    <div class="menu-card">
+                        <div class="menu-img">
+                            <img src="https://i.ibb.co/LtRyg4R/menu-2.jpg" alt="Grilled chicken with potatoes">
+                        </div>
+                        <div class="menu-text">
+                            <h4>Fried chicken Wings</h4>
+                            <p>Chicken, Garlic, Potatoes, Cornstarch</p>
+                            <p class="price">&#8377;1000</p>
+                            <p class="btn"><a href="#">Order Now</a></p>
+                        </div>
+                    </div>
+                    <!-- Dish 3 -->
+                    <div class="menu-card row-reverse">
+                        <div class="menu-img">
+                            <img src="https://i.ibb.co/pW9wJ1Y/menu-3.jpg" alt="Grilled chicken with potatoes">
+                        </div>
+                        <div class="menu-text">
+                            <h4>Paneer Tikka</h4>
+                            <p>Paneer, Garlic, Yogurt, Tomatoes</p>
+                            <p class="price">&#8377;750</p>
+                            <p class="btn"><a href="#">Order Now</a></p>
+                        </div>
+                    </div>
+                    <!--Dish 4-->
+                     <div class="menu-card row-reverse">
+                        <div class="menu-img">
+                            <img src="https://i.ibb.co/mGgvt96/7804777-cef40de3903b47c5b4bbe65df65fbde5.jpg" alt="Grilled chicken with potatoes">
+                        </div>
+                        <div class="menu-text">
+                            <h4>chicken Shawarma with potatoes</h4>
+                            <p>Chicken, Garlic, Potatoes, Tomatoes</p>
+                            <p class="price">&#8377;500</p>
+                            <p class="btn"><a href="#">Order Now</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+       document.addEventListener("DOMContentLoaded", () => {
+    // Dish details for all 4 dishes
+    const dishes = [
+        {
+            name: "Grilled chicken with potatoes",
+            ingredients: "Chicken, Garlic, Potatoes, Tomatoes",
+            price: "₹2000"
+        },
+        {
+            name: "Fried chicken Wings",
+            ingredients: "Chicken, Garlic, Potatoes, Cornstarch",
+            price: "₹1000"
+        },
+        {
+            name: "Paneer Tikka",
+            ingredients: "Paneer, Garlic, Yogurt, Tomatoes",
+            price: "₹750"
+        },
+        {
+            name: "Chicken Shawarma with potatoes",
+            ingredients: "Chicken, Garlic, Potatoes, Tomatoes",
+            price: "₹500"
+        }
+    ];
+
+    // Select all "Order Now" buttons
+    const orderButtons = document.querySelectorAll(".menu-card .btn a");
+
+    // Check if the number of buttons matches the number of dishes
+    if (orderButtons.length !== dishes.length) {
+        console.error("Mismatch between number of dishes and buttons. Please check the HTML structure.");
+        return;
+    }
+
+    // Attach event listeners to each button
+    orderButtons.forEach((button, index) => {
+        button.addEventListener("click", (event) => {
+            event.preventDefault(); // Prevent default link behavior
+
+            // Get the corresponding dish details
+            const dish = dishes[index];
+
+            // Display order confirmation
+            const orderSummary = `
+                Dish: ${dish.name}
+                Ingredients: ${dish.ingredients}
+                Price: ${dish.price}
+            `;
+            alert(`Order Confirmed!\n\n${orderSummary}`);
+        });
+    });
+});
+
+
+        </script>
+        
+
+        <!-- ...........food rating Section........... -->
+        <div class="Food Rating" id="food Rating">
+            <h2>Food Rating</h2>
+        <h2>Welcome to Food Ratings!</h2>
+        <p>Rate your favorite food items and help others make informed decisions!</p>
+    </div>
+
+    <div class="product-container">
+        <!-- Food Item 1 -->
+        <div class="product-item">
+            <h2>Mongolian Chicken</h2>
+            <img src="https://i.ibb.co/87CqFyJ/Mongolian-Chicken-9-819x1024.jpg" alt="Mongolian Chicken">
+            <p>Mongolian chicken is a popular dish featuring tender, crispy chicken coated in a flavorful sauce made from soy sauce, brown sugar, sesame oil, and other seasonings. It's often served with rice or noodles.</p>
+            <div class="rating">
+                <input type="radio" id="bad-1" name="rating1" value="1">
+                <input type="radio" id="average-1" name="rating1" value="2">
+                <input type="radio" id="good-1" name="rating1" value="3">
+                <input type="radio" id="excellent-1" name="rating1" value="4">
+                <input type="radio" id="outstanding-1" name="rating1" value="5">
+                <label class="star" for="bad-1">★</label>
+                <label class="star" for="average-1">★</label>
+                <label class="star" for="good-1">★</label>
+                <label class="star" for="excellent-1">★</label>
+                <label class="star" for="outstanding-1">★</label>
+                <p class="rating-result"></p>
+            </div>
+        </div>
+
+        <!-- Food Item 2 -->
+        <div class="product-item">
+            <h2>Fresh Corn Chowder with Basil and White Fish</h2>
+            <img src="https://i.ibb.co/rkcdDqw/Mexican-Street-Corn-Corn-and-Basil-Chowder-with-Seared-Whitefish-106.jpg" alt="Corn Chowder">
+            <p>Fresh Corn Chowder with Basil and White Fish is a creamy soup featuring sweet corn, delicate white fish, and fragrant basil.</p>
+            <div class="rating">
+                <input type="radio" id="bad-2" name="rating2" value="1">
+                <input type="radio" id="average-2" name="rating2" value="2">
+                <input type="radio" id="good-2" name="rating2" value="3">
+                <input type="radio" id="excellent-2" name="rating2" value="4">
+                <input type="radio" id="outstanding-2" name="rating2" value="5">
+                <label class="star" for="bad-2">★</label>
+                <label class="star" for="average-2">★</label>
+                <label class="star" for="good-2">★</label>
+                <label class="star" for="excellent-2">★</label>
+                <label class="star" for="outstanding-2">★</label>
+                <p class="rating-result"></p>
+            </div>
+        </div>
+
+        <!-- Food Item 3 -->
+        <div class="product-item">
+            <h2>Brazilian Fish Stew</h2>
+            <img src="https://i.ibb.co/j5FTjTS/Brazilian-Fish-Stew-Moqueca-Primavera-Kitchen-9-jpg.webp" alt="Brazilian Fish Stew">
+            <p>Moqueca is a Brazilian fish stew featuring white fish cooked in a coconut milk-based broth with tomatoes, onions, garlic, and spices.</p>
+            <div class="rating">
+                <input type="radio" id="bad-3" name="rating3" value="1">
+                <input type="radio" id="average-3" name="rating3" value="2">
+                <input type="radio" id="good-3" name="rating3" value="3">
+                <input type="radio" id="excellent-3" name="rating3" value="4">
+                <input type="radio" id="outstanding-3" name="rating3" value="5">
+                <label class="star" for="bad-3">★</label>
+                <label class="star" for="average-3">★</label>
+                <label class="star" for="good-3">★</label>
+                <label class="star" for="excellent-3">★</label>
+                <label class="star" for="outstanding-3">★</label>
+                <p class="rating-result"></p>
+            </div>
+        </div>
+
+        <!-- Food Item 4 -->
+        <div class="product-item">
+            <h2>Slow Cooker Honey Garlic Chicken</h2>
+            <img src="https://i.ibb.co/0rPVJTR/Slow-Cooker-Honey-Garlic-Chicken-and-Veggies.jpg" alt="Honey Garlic Chicken">
+            <p>Slow cooker honey garlic chicken is a tender and flavorful dish cooked in a honey-garlic sauce.</p>
+            <div class="rating">
+                <input type="radio" id="bad-4" name="rating4" value="1">
+                <input type="radio" id="average-4" name="rating4" value="2">
+                <input type="radio" id="good-4" name="rating4" value="3">
+                <input type="radio" id="excellent-4" name="rating4" value="4">
+                <input type="radio" id="outstanding-4" name="rating4" value="5">
+                <label class="star" for="bad-4">★</label>
+                <label class="star" for="average-4">★</label>
+                <label class="star" for="good-4">★</label>
+                <label class="star" for="excellent-4">★</label>
+                <label class="star" for="outstanding-4">★</label>
+                <p class="rating-result"></p>
+            </div>
+        </div>
+    </div>
+    <script>
+    // JavaScript code to handle star rating selection and feedback
+const ratingInputs = document.querySelectorAll('.rating input[type="radio"]');
+const ratingStars = document.querySelectorAll('.star');
+
+ratingInputs.forEach(input => {
+    input.addEventListener('click', function() {
+        const ratingResult = input.closest('.product-item').querySelector('.rating-result');
+        const starsGiven = parseInt(input.value);
+        let feedback = "";
+
+        switch (starsGiven) {
+            case 1:
+                feedback = "Bad";
+                break;
+            case 2:
+                feedback = "Average";
+                break;
+            case 3:
+                feedback = "Good";
+                break;
+            case 4:
+                feedback = "Excellent";
+                break;
+            case 5:
+                feedback = "Outstanding";
+                break;
+        }
+
+        // Use backticks for template literals
+        ratingResult.textContent = `You rated this as: ${feedback}`;
+        
+        // Update star selection visually
+        const parentRating = input.closest('.rating');
+        const stars = parentRating.querySelectorAll('.star');
+        stars.forEach((star, index) => {
+            if (index < starsGiven) {
+                star.classList.add('selected');
+            } else {
+                star.classList.remove('selected');
+            }
+        });
+    });
+});
+</script>
+<!--.........food events.......-->
+<div id="food-events">
+    <h2>Upcoming Events</h2>
+    <div class="event-card">
+      <img src="https://i.ibb.co/n09t2d5/960x0.jpg" alt="Wine Tasting Event">
+      <h3>Wine Tasting Night</h3>
+      <p>Date: November 15, 2024</p>
+      <p>Description: Join us for an exquisite wine tasting experience with selections from local vineyards.</p>
+      <a href="#" class="learn-more">Learn More</a>
+    </div>
+  </div>
+  
+  <div id="food-featured-events">
+    <h2>Featured Events</h2>
+    <div class="event-card">
+      <img src="https://i.ibb.co/N1tjwF0/Live-Music-Header-1.jpg" alt="Live Music Event">
+      <h3>Live Music Night</h3>
+      <p>Date: November 20, 2024</p>
+      <p>Description: Enjoy live performances from local artists while you dine.</p>
+      <a href="#" class="learn-more">Learn More</a>
+    </div>
+  </div>
+  
+  <div id="food-all-events">
+    <h2>All Events</h2>
+    <div class="event-card">
+      <img src="https://i.ibb.co/ZXhJ9vQ/Four-people-cooking-together-at-a-cooking-school.jpg" alt="Cooking Class Event">
+      <h3>Cooking Class</h3>
+      <p>Date: November 25, 2024</p>
+      <p>Description: Learn to cook a gourmet meal with our head chef in this interactive class.</p>
+      <a href="#" class="learn-more">Learn More</a>
+    </div>
+    <div class="event-card">
+      <img src="https://i.ibb.co/ys24FLQ/Screenshot-20241104-142608.jpg" alt="Holiday Feast Event">
+      <h3>Holiday Feast</h3>
+      <p>Date: December 24, 2024</p>
+      <p>Description: Celebrate the holiday season with our special menu and festive decorations.</p>
+      <a href="#" class="learn-more">Learn More</a>
+    </div>
+  </div>
+  <!--......food gallary-->
+  <section id="food-gallary" class="welcome-section">
+    <h1>Welcome to Restaurant Photo Gallery</h1>
+    <p>With Creative & Unique Style</p>
+    <div class="gallery">
+        <!-- Add image items -->
+        <img src="https://i.ibb.co/wYC5Rp2/pan-fried-duck.jpg" alt="Image 1">
+        <img src="https://i.ibb.co/cbDwCqY/364357-sld.jpg" alt="Image 2">
+        <img src="https://i.ibb.co/PTn2RTD/elegant-dish-in-a-fine-dining-setting.jpg" alt="Image 3">
+        <img src="https://i.ibb.co/ck6fvnf/68993986.jpg" alt="Image 4">
+        <img src="https://i.ibb.co/2thcLWQ/HR18061102-V-081-36e466e8-aded-4b39-84b4-401dff6c0dc0.jpg" alt="Image 5">
+        <img src="https://i.ibb.co/V2W060G/08best-restaurants-chicago13-hpqj-super-Jumbo.jpg" alt="Image 6">
+        <img src="https://i.ibb.co/HXTRwVD/CB-Winter-17-Adult-Dining-21-dad5461a-9523-4316-9a22-b92d00feb4c6.jpg" alt="Image 7">
+        <img src="https://i.ibb.co/V2W060G/08best-restaurants-chicago13-hpqj-super-Jumbo.jpg" alt="Image 8">
+        </div>
+</section>
+  
+
+        
+        
+       <!-- ...........Blog Section........... -->
+<div id="blog">
+    <div class="container">
+        <h2 class="heading">Our Recent Blog</h2>
+        <div class="row">
+            <div class="col">
+                <img src="https://i.ibb.co/hXXRNNb/blog-1.jpg" alt="Blog 1">
+                <div>
+                    <a href="">Apr. 19, 2024</a>
+                    <a href="">Admin</a>
+                </div>
+                <h3 class="title">Taste the delicious food in Mumbai</h3>
+                <p><a href="">Read More</a></p>
+            </div>
+            <div class="col">
+                <img src="https://i.ibb.co/8NY0K5x/blog-2.jpg" alt="">
+                <div>
+                    <a href="">Apr. 20, 2024</a>
+                    <a href="">Admin</a>
+                </div>
+                <h3 class="title">Exploring Mumbai's Culinary Delights</h3>
+                <p><a href="">Read More</a></p>
+            </div>
+            <div class="col">
+                <img src="https://i.ibb.co/tBFrJH5/blog-3-1.jpg" alt="">
+                <div>
+                    <a href="">Apr. 21, 2024</a>
+                    <a href="">Admin</a>
+                </div>
+                <h3 class="title">The Best Restaurants in Mumbai</h3>
+                <p><a href="">Read More</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ............careers Section............ -->
+<section class="about-us" id="careers">
+        <h2>About Us</h2>
+        <p>At Rasoi Restaurant, we are committed to providing an exceptional dining experience, blending culinary tradition with modern flavors.</p>
+    </section>
+
+    <section class="featured-positions">
+        <h2>Featured Positions</h2>
+        <div class="position-card">
+            <h3>Kitchen Manager</h3>
+            <p>Responsibilities: Overseeing kitchen operations, managing staff, ensuring food quality...</p>
+            <a href="#">Apply Now</a>
+        </div>
+        <div class="position-card">
+            <h3>Server</h3>
+            <p>Responsibilities: Providing exceptional customer service, taking orders, serving food and beverages...</p>
+            <a href="#">Apply Now</a>
+        </div>
+        <div class="position-card">
+            <h3>Bartender</h3>
+            <p>Responsibilities: Mixing and serving drinks, providing excellent customer service, maintaining bar area...</p>
+            <a href="#">Apply Now</a>
+        </div>
+    </section>
+
+    <section class="employee-salaries">
+        <h2>Employee Salaries and Experiences</h2>
+        <ul>
+            <li><strong>Kitchen Manager:</strong> $50,000 - $60,000 per year, with 5+ years of experience preferred.</li>
+            <li><strong>Server:</strong> $30,000 - $35,000 per year, with opportunities for tips based on performance.</li>
+            <li><strong>Bartender:</strong> $32,000 - $40,000 per year, with strong customer service skills required.</li>
+        </ul>
+    </section>
+
+    <section class="our-team" id="our-team">
+        <h2>Our Team</h2>
+        <div class="team-card">
+            <h3>Rakesh Rao - Head Chef</h3>
+            <p>With over 10 years of experience, Rakesh leads our kitchen with passion and creativity.</p>
+        </div>
+        <div class="team-card">
+            <h3>Sathwik Rao - Restaurant Manager</h3>
+            <p>Sathwik ensures everything runs smoothly and maintains our high standards of service.</p>
+        </div>
+    </section>
+
+    <section class="why-join-us">
+        <h2>Why Join Our Team?</h2>
+        <ul>
+            <li>Competitive compensation and benefits</li>
+            <li>Opportunities for growth and development</li>
+            <li>Supportive and inclusive work environment</li>
+            <li>Flexible scheduling options</li>
+        </ul>
+    </section>
+
+    <section class="application-process">
+        <h2>Application Process</h2>
+        <ol>
+            <li>Review available positions</li>
+            <li>Submit your application online</li>
+            <li>Interview process</li>
+            <li>Job offer</li>
+        </ol>
+    </section>
+
+    <section class="testimonials">
+        <h2>What Our Employees Say</h2>
+        <div class="testimonial-card">
+            <p>"Working at Rasoi Restaurant has been a fantastic experience. The team is supportive and the opportunities for growth are endless."</p>
+        </div>
+        <div class="testimonial-card">
+            <p>"I love the flexibility that comes with working here. It allows me to balance my work and personal life."</p>
+        </div>
+    </section>
+
+
+<!-- ............Contact Section............ -->
+<div id="contact">
+    <div class="container">
+        <div class="contact-form">
+            <h3>Get In Touch</h3>
+            <form id="bookingForm">
+                <div>
+                    <label for="name">Name</label>
+                    <input id="name" type="text" placeholder="Enter Your Name">
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input id="email" type="email" placeholder="Enter Your Email">
+                </div>
+                <div>
+                    <label for="phone">Phone</label>
+                    <input id="phone" type="tel" placeholder="Enter Your Mobile No.">
+                </div>
+                <div>
+                    <label for="date">Date</label>
+                    <input id="date" type="date">
+                </div>
+                <div>
+                    <label for="time">Time</label>
+                    <input id="time" type="time">
+                </div>
+                <div>
+                    <label for="persons">No. of Persons</label>
+                    <input id="persons" type="number" placeholder="Enter Number">
+                </div>
+
+                <button type="button" id="bookTableButton">Book Your Table</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="bookingSummary" style="display: none;">
+    <h3>Booking Summary</h3>
+    <p><strong>Name:</strong> <span id="summary-name"></span></p>
+    <p><strong>Email:</strong> <span id="summary-email"></span></p>
+    <p><strong>Phone:</strong> <span id="summary-phone"></span></p>
+    <p><strong>Date:</strong> <span id="summary-date"></span></p>
+    <p><strong>Time:</strong> <span id="summary-time"></span></p>
+    <p><strong>No. of Persons:</strong> <span id="summary-persons"></span></p>
+    <button id="goBackButton">Go Back</button>
+</div>
+
+<script>
+    document.getElementById("bookTableButton").addEventListener("click", () => {
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+        const date = document.getElementById("date").value;
+        const time = document.getElementById("time").value;
+        const persons = document.getElementById("persons").value;
+
+        if (name && email && phone && date && time && persons) {
+            // Convert time to 12-hour format with AM/PM
+            let [hours, minutes] = time.split(":");
+            hours = parseInt(hours, 10);
+            const ampm = hours >= 12 ? "PM" : "AM";
+            hours = hours % 12 || 12;
+            const formattedTime = `${hours}:${minutes} ${ampm}`;
+
+            // Display the booking summary
+            document.getElementById("summary-name").textContent = name;
+            document.getElementById("summary-email").textContent = email;
+            document.getElementById("summary-phone").textContent = phone;
+            document.getElementById("summary-date").textContent = date;
+            document.getElementById("summary-time").textContent = formattedTime;
+            document.getElementById("summary-persons").textContent = persons;
+
+            // Hide the form and show the booking summary
+            document.getElementById("contact").style.display = "none";
+            document.getElementById("bookingSummary").style.display = "block";
+        } else {
+            alert("Please fill out all fields before booking.");
+        }
+    });
+
+    document.getElementById("goBackButton").addEventListener("click", () => {
+        // Go back to the form
+        document.getElementById("bookingSummary").style.display = "none";
+        document.getElementById("contact").style.display = "block";
+    });
+</script>
+ 
+
+
+
+<!-- Footer Section -->
+<div id="footer">
+    <div class="container">
+        <div class="top-footer">
+            <img src="https://i.ibb.co/5BNk0sg/logo.png" alt="Restaurant Logo" />
+        </div>
+        <div class="footer-links">
+            <div class="column">
+                <div>CONTACT</div>
+                <ul class="col-link">
+                    <li><a href="">Phone: +91 9000XXXXXX</a></li>
+                    <li><a href="">Email: example@gmail.com</a></li>
+                    <li><a href="">Open hours: Monday - Sunday 8:00AM - 9:00PM</a></li>
+                    <li><a href="">Address: 123, XYZ, Mumbai, India</a></li>
+                </ul>
+            </div>
+            <div class="column">
+                <div>OUR STORY</div>
+                <ul class="col-link">
+                    <li><a href="">Who we are?</a></li>
+                    <li><a href="">Our Chef</a></li>
+                    <li><a href="">Blog</a></li>
+                    <li><a href="">Menu</a></li>
+                    <li><a href="">Events</a></li>
+                </ul>
+            </div>
+            <div class="column">
+                <div>THE RESTAURANT</div>
+                <ul class="col-link">
+                    <li><a href="">Foods</a></li>
+                    <li><a href="">Our Chef</a></li>
+                    <li><a href="">Blog</a></li>
+                    <li><a href="">Menu</a></li>
+                    <li><a href="">Events</a></li>
+                </ul>
+            </div>
+            <div class="column">
+                <div>SOCIAL LINKS</div>
+                <ul class="col-link">
+                    <a href=""><i class="fa-brands fa-facebook"></i></a>
+                    <a href=""><i class="fa-brands fa-instagram"></i></a>
+                    <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                    <a href=""><i class="fa-brands fa-twitter"></i></a>
+                </ul>
+                <div class="newsletter">
+                    <input type="text" placeholder="Enter your email address...">
+                    <button>SUBSCRIBE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="footer-bottom">
+        <p>Copyright &copy; 2024 All Rights Reserved</p>
+    </div>
+</div>
+<script>
+
+    document.getElementsById('video').playbackRate=0.25
+</script>
+    </body>
+</html>
